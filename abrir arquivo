@@ -1,0 +1,34 @@
+int c, count, i = 0, j = 0, num = 0, vetInteiro[TAM]; 
+FILE *ent;
+
+     ent = fopen("teste 1k.txt", "r");
+
+     if(ent){
+        do{
+            c = fgetc( ent );
+
+            if(c != 32){
+                if(j != 0){
+                    num = (num * 10) + (c - 48);
+                }
+                else{
+                    num = num + (c - 48);
+                    j++;
+                }
+            }
+            else{
+                vetInteiro[i] = num;
+                num = 0;
+                i++;
+                j = 0;
+            }
+        }while( c != EOF );
+
+        fclose( ent );
+
+      }else{
+
+      	printf ("Erro na abertura do arquivo\n");
+	  }
+
+	  i = 0;
